@@ -1,7 +1,19 @@
-export default function sum(items) {
-  let result = 0;
-  for (const item of items) {
-    result += item;
+export default function checkHealth(creature) {
+  if (creature === null) {
+    throw Error('null argument');
   }
-  return result;
+  const { health } = creature;
+  if (Number.isNaN(health) || health == null) {
+    throw Error('illegal argument');
+  }
+  if (health >= 50) {
+    return 'healthy';
+  }
+  if (health >= 15 && health < 50) {
+    return 'wounded';
+  }
+  if (health < 15) {
+    return 'critical';
+  }
+  throw Error('illegal argument');
 }
